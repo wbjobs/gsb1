@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>无服务器协作文档编辑器（CRDT）</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">CRDT 协作文档 <span class="badge" id="modeBadge">实时</span></div>
+    <div class="toolbar">
+      <button id="boldBtn" title="Ctrl+B 加粗/取消加粗"><b>B</b></button>
+      <button id="replayBtn">⏱ 回放历史</button>
+      <button id="autoBtn">▶ 自动编辑</button>
+    </div>
+    <div class="stats" id="stats">初始化中…</div>
+  </header>
+
+  <section class="replaybar" id="replaybar" hidden>
+    <input type="range" id="timeline" min="0" max="0" value="0" />
+    <div class="replay-controls">
+      <button id="stepBackBtn" title="上一步">⏮</button>
+      <button id="playBtn" title="播放/暂停">▶</button>
+      <button id="stepFwdBtn" title="下一步">⏭</button>
+      <select id="speedSelect">
+        <option value="0">1×</option>
+        <option value="1">4×</option>
+        <option value="2" selected>16×</option>
+        <option value="3">64×</option>
+      </select>
+      <span class="replay-info"><span id="replayIndex">0</span> / <span id="replayTotal">0</span></span>
+      <span class="replay-desc" id="replayDesc">空白文档</span>
+      <button id="exitReplayBtn" class="exit">退出回放</button>
+    </div>
+  </section>
+
+  <main>
+    <div id="editor" spellcheck="false"></div>
+  </main>
+
+  <footer class="statusbar">
+    <span id="fps">FPS --</span>
+    <span id="hint">Ctrl+B 加粗 · 四个标签页打开本页即可协作 · 数据存于 IndexedDB</span>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

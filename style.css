@@ -1,0 +1,53 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f5f6f8;
+  color: #1f2329;
+  display: flex;
+  flex-direction: column;
+}
+.topbar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 8px 16px; background: #fff; border-bottom: 1px solid #e5e6eb;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+.badge {
+  font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 10px;
+  background: #e8f3ff; color: #165dff;
+}
+.badge.replay { background: #fff3e0; color: #d46b08; }
+.toolbar { display: flex; gap: 8px; }
+button {
+  border: 1px solid #d9dce3; background: #fff; border-radius: 6px;
+  padding: 5px 12px; font-size: 13px; cursor: pointer; color: #1f2329;
+}
+button:hover { background: #f2f3f5; }
+button:disabled { opacity: .45; cursor: default; }
+.stats { margin-left: auto; font-size: 12px; color: #646a73; font-variant-numeric: tabular-nums; }
+.replaybar {
+  background: #fff; border-bottom: 1px solid #e5e6eb; padding: 10px 16px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+#timeline { width: 100%; }
+.replay-controls { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.replay-info { color: #4e5969; font-variant-numeric: tabular-nums; }
+.replay-desc { color: #86909c; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+button.exit { border-color: #ffb65c; color: #d46b08; }
+main { flex: 1; overflow: auto; display: flex; justify-content: center; padding: 24px 12px; }
+#editor {
+  width: 100%; max-width: 860px; min-height: 100%;
+  background: #fff; border: 1px solid #e5e6eb; border-radius: 10px;
+  padding: 48px 64px 120px;
+  font-size: 16px; line-height: 1.9; outline: none;
+  white-space: pre-wrap; word-break: break-word;
+  caret-color: #165dff;
+}
+#editor[contenteditable="false"] { background: #fafafa; color: #4e5969; }
+#editor b { font-weight: 700; }
+.statusbar {
+  display: flex; gap: 16px; padding: 5px 16px; font-size: 12px;
+  color: #86909c; background: #fff; border-top: 1px solid #e5e6eb;
+}
+#fps { font-variant-numeric: tabular-nums; min-width: 140px; }

@@ -1,0 +1,11 @@
+{
+  "name": "crdt-collab-doc",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "无服务器多标签页协作文档编辑器：IndexedDB + BroadcastChannel + Web Worker + RGA CRDT",
+  "scripts": {
+    "start": "python3 -m http.server 8123",
+    "test": "node --test test/convergence.test.mjs test/tabs.test.mjs test/replay.test.mjs"
+  }
+}
