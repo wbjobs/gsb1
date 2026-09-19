@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>无服务器 CRDT 协作文档</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>无服务器协作文档</h1>
+          <p id="peerId" class="subtitle">正在初始化 Worker…</p>
+        </div>
+        <div class="status-pill" id="statusPill">初始化</div>
+      </header>
+
+      <section class="toolbar" aria-label="编辑工具栏">
+        <button id="boldButton" type="button" title="Ctrl/Cmd+B"><strong>B</strong> 加粗</button>
+        <button id="sampleButton" type="button">写入 1 万字样例</button>
+        <button id="syncButton" type="button">重新请求同步</button>
+        <span class="spacer"></span>
+        <label class="toggle">
+          <input id="liveToggle" type="checkbox" checked />
+          自动跟随实时状态
+        </label>
+      </section>
+
+      <section id="editor" class="editor" contenteditable="true" spellcheck="false"
+        aria-label="可协作文档编辑器"></section>
+
+      <section class="timeline-card" aria-label="操作时间轴">
+        <div class="timeline-row">
+          <button id="historyButton" type="button">查看历史</button>
+          <button id="firstButton" type="button">⏮</button>
+          <button id="prevButton" type="button">−1</button>
+          <button id="playButton" type="button">▶</button>
+          <button id="nextButton" type="button">+1</button>
+          <input id="timeline" type="range" min="0" max="0" value="0" />
+          <button id="liveButton" type="button">回到当前</button>
+          <select id="speedSelect" aria-label="回放速度">
+            <option value="1">1 步/拍</option>
+            <option value="10">10 步/拍</option>
+            <option value="50" selected>50 步/拍</option>
+            <option value="200">200 步/拍</option>
+          </select>
+        </div>
+        <div class="timeline-meta">
+          <span id="timelinePosition">0 / 0 次操作</span>
+          <span id="timelineMode">实时模式</span>
+          <span id="docStats">0 字 · 0 操作 · 等待恢复</span>
+          <span id="fpsStats">-- fps · -- ms/帧</span>
+        </div>
+        <div id="operationDetail" class="operation-detail">拖动时间轴后，这里显示对应操作的因果信息。</div>
+      </section>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
